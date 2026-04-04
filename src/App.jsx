@@ -1,6 +1,8 @@
 
 import { motion } from "framer-motion";
 import { Download, Search, Music, Shield, Zap } from "lucide-react";
+import DownloadDetailsDemo from "./components/DownloadDetailsDemo";
+import TechArchitecture from "./components/TechArchitecture";
 
 export default function App() {
   return (
@@ -9,6 +11,7 @@ export default function App() {
       <HowItWorks />
       <Features />
       <Philosophy />
+      <TechArchitecture />
       <DownloadSection />
       <Footer />
     </div>
@@ -78,26 +81,28 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="py-32 px-6 max-w-6xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-16">
-        Как это работает
-      </h2>
+    <section className="py-32 px-6 bg-zinc-950">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-16">
+          Как это работает
+        </h2>
 
-      <div className="grid md:grid-cols-3 gap-10">
-        {steps.map((step, i) => (
-          <div
-            key={i}
-            className="bg-zinc-900 p-8 rounded-2xl"
-          >
-            <step.icon className="mb-4" size={32} />
-            <h3 className="text-xl font-semibold mb-2">
-              {step.title}
-            </h3>
-            <p className="text-zinc-400">
-              {step.text}
-            </p>
-          </div>
-        ))}
+        <div className="grid md:grid-cols-3 gap-10">
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              className="bg-black p-8 rounded-2xl border border-zinc-800"
+            >
+              <step.icon className="mb-4" size={32} />
+              <h3 className="text-xl font-semibold mb-2">
+                {step.title}
+              </h3>
+              <p className="text-zinc-400">
+                {step.text}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -128,7 +133,7 @@ function Features() {
   ];
 
   return (
-    <section className="py-32 px-6 bg-zinc-950">
+    <section className="py-32 px-6 border-t border-zinc-800 bg-zinc-950">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-16">
           Возможности
@@ -157,43 +162,68 @@ function Features() {
 
 function Philosophy() {
   return (
-    <section className="py-32 px-6 text-center max-w-3xl mx-auto">
-      <h2 className="text-4xl font-bold mb-10">
-        Философия
-      </h2>
+    <section className="py-32 px-6 border-t border-zinc-800 bg-zinc-950">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-10">
+          Философия
+        </h2>
 
-      <p className="text-xl text-zinc-400 leading-relaxed">
-        Музыка должна быть доступной каждому.
-        <br />
-        Без подписок.
-        <br />
-        Без цензуры.
-        <br />
-        Без искусственных ограничений.
-      </p>
+        <div className="bg-black border border-zinc-800 rounded-2xl p-10">
+          <p className="text-xl text-zinc-300 leading-relaxed">
+            Музыка должна быть доступной каждому.
+            <br />
+            Без подписок.
+            <br />
+            Без цензуры.
+            <br />
+            Без искусственных ограничений.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
 
 function DownloadSection() {
   return (
-    <section className="py-32 px-6 text-center bg-zinc-950">
-      <h2 className="text-4xl font-bold mb-6">
-        Попробуй сам
-      </h2>
+    <section className="py-32 px-6 border-t border-zinc-800 bg-zinc-950">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-6">
+          Как выглядит процесс скачивания
+        </h2>
 
-      <p className="text-zinc-400 mb-10">
-        Windows · macOS · Linux
-      </p>
+        <p className="text-zinc-400 mb-16">
+          Вот пример того, как работает реальное скачивание в приложении:
+        </p>
 
-      <a
-        href="https://github.com/neegde/neegde-tauri/releases"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="px-10 py-5 bg-white text-black rounded-2xl font-medium hover:scale-105 transition inline-block"
-      >
-        Скачать Neegde
-      </a>
+        <DownloadDetailsDemo />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mt-16"
+        >
+          <h3 className="text-2xl font-bold mb-4">Попробуй сам</h3>
+
+          <p className="text-zinc-400 mb-8">
+            Скачивай музыку в полном качестве на всех платформах
+          </p>
+
+          <p className="text-sm text-zinc-500 mb-6">
+            Windows · macOS · Linux
+          </p>
+
+          <a
+            href="https://github.com/neegde/neegde-tauri/releases"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-10 py-5 bg-white text-black rounded-2xl font-medium hover:scale-105 transition inline-block"
+          >
+            Скачать Neegde
+          </a>
+        </motion.div>
+      </div>
     </section>
   );
 }
