@@ -3,23 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Neegde · Музыкальный плеер с Rutracker · Бесплатно, без подписок</title>
+    <meta name="description" content="Бесплатный плеер Neegde играет музыку с Rutracker напрямую — без скачивания и без подписок. Поддержка FLAC, работает в России, открытый исходный код. Windows, macOS, Linux." />
+    <meta name="keywords" content="музыкальный плеер, rutracker, торренты, flac, бесплатный плеер, плеер без подписки, музыка без подписки, neegde, open source плеер, плеер для windows mac linux" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Neegde" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href="https://neegde.ru/" />
+
     <link rel="icon" href="/images/neegde-logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="/images/neegde-logo.png" />
 
-    <meta name="description" content="Музыкальный стриминг из BitTorrent-роёв. Старт трека меньше чем за секунду. Без подписок, без серверов, без регионов." />
-    <meta property="og:title" content="Neegde — Где слушаешь? Нигде." />
-    <meta property="og:description" content="Музыкальный стриминг из BitTorrent-роёв. Старт трека меньше чем за секунду." />
-    <meta property="og:image" content="/images/screen-album.png" />
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#000000" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Neegde" />
+    <meta property="og:url" content="https://neegde.ru/" />
+    <meta property="og:title" content="Neegde · Музыкальный плеер с Rutracker · Бесплатно" />
+    <meta property="og:description" content="Бесплатный плеер, который играет музыку из торрентов меньше чем за секунду. Без подписок, без регистрации, поддержка FLAC." />
+    <meta property="og:image" content="https://neegde.ru/images/screen-album.png" />
+    <meta property="og:image:width" content="1508" />
+    <meta property="og:image:height" content="990" />
+    <meta property="og:image:alt" content="Интерфейс музыкального плеера Neegde" />
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Neegde · Музыкальный плеер с Rutracker" />
+    <meta name="twitter:description" content="Бесплатный плеер, который играет музыку из торрентов меньше чем за секунду. Без подписок и регистрации." />
+    <meta name="twitter:image" content="https://neegde.ru/images/screen-album.png" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="preload" as="image" href="/images/screen-album.png" fetchpriority="high">
 
-    <title>Neegde — Где слушаешь? Нигде.</title>
+    <!-- Structured data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Neegde",
+      "alternateName": "Нигде",
+      "description": "Бесплатный музыкальный плеер, который играет треки напрямую из торрентов Rutracker. Без подписок, без регистрации, поддержка FLAC. Работает в России.",
+      "url": "https://neegde.ru/",
+      "image": "https://neegde.ru/images/screen-album.png",
+      "applicationCategory": "MultimediaApplication",
+      "applicationSubCategory": "MusicApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "softwareVersion": "0.1.7",
+      "downloadUrl": "https://github.com/neegde/neegde-tauri/releases",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      },
+      "license": "https://opensource.org/licenses/MIT",
+      "inLanguage": "ru",
+      "featureList": [
+        "Воспроизведение музыки из торрентов без скачивания",
+        "Поиск по Rutracker",
+        "Поддержка FLAC и lossless",
+        "10-полосный эквалайзер",
+        "Без регистрации и подписки",
+        "Открытый исходный код"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "Neegde",
+        "url": "https://github.com/neegde"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Neegde",
+      "alternateName": "Нигде",
+      "url": "https://neegde.ru/",
+      "inLanguage": "ru-RU",
+      "description": "Бесплатный музыкальный плеер с Rutracker"
+    }
+    </script>
   </head>
   <body class="bg-black">
     <div id="root"></div>
