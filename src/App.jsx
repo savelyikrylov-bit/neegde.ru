@@ -66,9 +66,9 @@ function Nav() {
         </a>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/70">
-          <a href="#how" className="hover:text-white transition">Как работает</a>
-          <a href="#specs" className="hover:text-white transition">Возможности</a>
-          <a href="#faq" className="hover:text-white transition">Вопросы</a>
+          <a href="#how" className="hover:text-white transition">Как это работает</a>
+          <a href="#specs" className="hover:text-white transition">Под капотом</a>
+          <a href="#faq" className="hover:text-white transition">FAQ</a>
           <a
             href={REPO_URL}
             target="_blank"
@@ -275,8 +275,8 @@ function PlaySimulator() {
 
   const statusText =
     state === "idle"       ? "готов"
-    : state === "connecting" ? "ищу раздачу…"
-    :                         "играет · меньше секунды";
+    : state === "connecting" ? "подключаюсь к рою…"
+    :                         "first byte · streaming";
 
   return (
     <div className="flex items-center gap-4 bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-4 pr-5 max-w-md w-full shadow-2xl">
@@ -291,7 +291,7 @@ function PlaySimulator() {
 
       {/* meta */}
       <div className="flex-1 min-w-0 text-left">
-        <div className="text-sm font-semibold truncate">Radiohead — 15 Step</div>
+        <div className="text-sm font-semibold truncate">Кровосток — Сдавать говно</div>
         <div className="mt-0.5 flex items-center gap-2 text-[11px] font-mono text-white/50">
           <span
             className={`tabular-nums transition-colors ${
@@ -357,8 +357,8 @@ function Hero() {
   const heroHref = userAsset?.browser_download_url ?? RELEASES_URL;
   const heroLabel = userOs ? `Скачать для ${userOs}` : "Скачать Neegde";
   const heroSub = userAsset
-    ? formatSize(userAsset.size) ?? "windows · mac · linux"
-    : "windows · mac · linux";
+    ? formatSize(userAsset.size) ?? "win · mac · linux"
+    : "win · mac · linux";
 
   return (
     <section id="top" className="relative pt-40 pb-24 overflow-hidden grain">
@@ -391,9 +391,9 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-white/60 leading-relaxed"
         >
-          Плеер, который играет музыку прямо из&nbsp;торрентов. Нажимаешь на&nbsp;трек —{" "}
-          <span className="text-white font-medium">слышишь его через секунду</span>.
-          Без&nbsp;подписок, без&nbsp;регистрации, без&nbsp;блокировок по&nbsp;стране.
+          Музыкальный стриминг из BitTorrent&#8209;роёв. Нажимаешь play — звук
+          появляется <span className="text-white font-medium">меньше чем за секунду</span>.
+          Без подписок, без серверов, без регионов.
         </motion.p>
 
         <motion.div
@@ -420,7 +420,7 @@ function Hero() {
             className="px-7 py-4 text-white/80 hover:text-white rounded-full font-medium inline-flex items-center gap-2 border border-white/15 hover:border-white/30 transition"
           >
             <Github size={18} />
-            Код на GitHub
+            Исходники
           </a>
         </motion.div>
 
@@ -433,7 +433,7 @@ function Hero() {
         >
           <PlaySimulator />
           <div className="mt-3 text-[11px] font-mono uppercase tracking-widest text-white/30">
-            нажми и засеки секунду
+            нажми ▶ и засеки секунду
           </div>
         </motion.div>
 
@@ -447,7 +447,7 @@ function Hero() {
           <div className="absolute -inset-x-10 -top-10 bottom-0 bg-gradient-to-b from-brand/20 via-brand/5 to-transparent blur-3xl pointer-events-none" />
           <img
             src="/images/screen-album.png"
-            alt="Интерфейс музыкального плеера Neegde — открытый альбом Radiohead In Rainbows с треклистом, поиском по Rutracker и поддержкой FLAC"
+            alt="Интерфейс Neegde — открытый альбом Кровосток"
             className="relative w-full max-w-5xl mx-auto rounded-2xl shot-shadow"
             loading="eager"
             decoding="async"
@@ -475,48 +475,43 @@ function Hero() {
 const STORY = [
   {
     img: "/images/screen-search.png",
-    alt: "Поиск альбомов на Rutracker в плеере Neegde — результаты по Radiohead In Rainbows с бейджами FLAC и числом раздающих",
     num: "01",
     kicker: "Поиск",
     title: "Ищи что угодно.",
     body:
-      "Поиск работает по Rutracker — там почти вся музыка, которую ты знаешь. Пишешь название, видишь раздачи с качеством и количеством раздающих. Если трекер заблокирован, приложение само подключается через зеркало или прокси.",
+      "Интеграция с Rutracker: зеркала, прокси, кэш, авторизация. Пишешь имя — получаешь раздачи с тегами качества (MP3, FLAC, lossless) и числом сидов в реальном времени.",
   },
   {
     img: "/images/screen-album.png",
-    alt: "Открытый альбом Radiohead In Rainbows в плеере Neegde с обложкой, треклистом и поддержкой FLAC",
     num: "02",
     kicker: "Альбом",
     title: "Открывай. Листай. Выбирай.",
     body:
-      "Обложка, треклист, битрейт, размер — всё как в обычном плеере. Разница только в том, что музыка берётся напрямую из торрентов, а не с чужого сервера с лицензиями и блокировками.",
+      "Коллекции раздач, обложки, размер, метаданные — как в любом нормальном плеере. Только источник — рой, а не чужой сервер с лицензиями.",
   },
   {
     img: "/images/screen-playing.png",
-    alt: "Трек играет в плеере Neegde — мгновенный запуск из торрента, меньше секунды до первого звука",
     num: "03",
-    kicker: "Запуск",
-    title: "Звук — через секунду.",
+    kicker: "Play",
+    title: "Старт меньше секунды.",
     body:
-      "Нажимаешь на трек — он начинает играть почти сразу. Движок vozduxan, написанный на C++, в первую очередь просит из сети начало файла, а не весь целиком. Поэтому ждать полной загрузки не надо — перемотка, пауза, следующий трек работают как в любом плеере.",
+      "vozduxan — собственный C++ движок на libtorrent — запрашивает первые piece’ы с дедлайном и отдаёт их через локальный HTTP с Range. Трек начинает играть пока рой ещё качается.",
   },
   {
     img: "/images/screen-library-tracks.png",
-    alt: "Локальная библиотека треков в Neegde — без аккаунтов, синхронизации и облака",
     num: "04",
     kicker: "Библиотека",
-    title: "Всё у тебя.",
+    title: "Лайки без аккаунтов.",
     body:
-      "Отмечаешь понравившееся — оно сохраняется прямо на твоём компьютере. Без аккаунта, без синхронизации, без отправки куда-то наружу. Никто не знает какую музыку ты слушаешь — включая нас.",
+      "Всё хранится локально. Никакого логина, никакого cloud sync, никаких серверов которые завтра закроются или продадут твою историю прослушиваний.",
   },
   {
     img: "/images/screen-library-albums.png",
-    alt: "Коллекция альбомов в плеере Neegde — сетка обложек лайкнутых релизов",
     num: "05",
     kicker: "Коллекция",
     title: "Твоя, а не чья-то.",
     body:
-      "Листай по альбомам, переключай виды, забирай понравившееся на диск целиком. Папки, обложки, теги — всё сохраняется как надо. Это реально твоя библиотека, а не список в чужой базе данных.",
+      "Переключай виды, группируй по альбомам, экспортируй треки с сохранением структуры. Это твоя библиотека — в буквальном смысле слова.",
   },
 ];
 
@@ -585,7 +580,7 @@ function ScrollStory() {
               <motion.img
                 key={i}
                 src={s.img}
-                alt={s.alt}
+                alt={s.title}
                 className="absolute max-w-full md:max-w-[110%] w-auto max-h-[80vh] rounded-2xl shot-shadow"
                 animate={{
                   opacity: i === active ? 1 : 0,
@@ -612,18 +607,18 @@ function HowItWorks() {
   const steps = [
     {
       n: "01",
-      t: "Находим музыку",
-      d: "Ищем нужный альбом по Rutracker. Отбираем раздачу с лучшим качеством и активными раздающими. Если трекер заблокирован — приложение само подключается через зеркало или прокси.",
+      t: "Находим раздачу",
+      d: "Поиск по Rutracker с кэшем, зеркалами и прокси. Результаты фильтруются по качеству и количеству сидов.",
     },
     {
       n: "02",
-      t: "Подключаемся",
-      d: "Движок vozduxan — это наша библиотека на C++ — начинает скачивать выбранную раздачу. Но не весь файл подряд, а в первую очередь его начало, чтобы плеер мог запуститься сразу.",
+      t: "Стартуем рой",
+      d: "vozduxan — C++ движок на libtorrent — подключается к пирам и помечает первые 20 piece’ов как критичные по времени.",
     },
     {
       n: "03",
-      t: "Играем на ходу",
-      d: "Как только приходят первые секунды файла, плеер начинает звучать. Перемотка, пауза, следующий трек — всё работает, пока остальное ещё скачивается в фоне.",
+      t: "Отдаём через HTTP",
+      d: "Локальный HTTP-сервер принимает Range-запросы от плеера. Audio-элемент получает байты пока остальной рой ещё качается.",
     },
   ];
 
@@ -679,25 +674,25 @@ function FlowDiagram() {
           </filter>
         </defs>
 
-        {/* node: торрент-сеть */}
+        {/* node: BT swarm */}
         <g>
           <rect x="20" y="50" width="160" height="40" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
-          <text x="100" y="68" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontFamily="'JetBrains Mono', monospace" fontSize="11">торрент-сеть</text>
-          <text x="100" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontFamily="'JetBrains Mono', monospace" fontSize="9">другие пользователи</text>
+          <text x="100" y="68" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontFamily="'JetBrains Mono', monospace" fontSize="11">BitTorrent</text>
+          <text x="100" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontFamily="'JetBrains Mono', monospace" fontSize="9">swarm · peers</text>
         </g>
 
         {/* node: vozduxan (highlighted) */}
         <g>
           <rect x="320" y="44" width="160" height="52" rx="10" fill="rgba(252,116,29,0.08)" stroke="rgba(252,116,29,0.5)" />
           <text x="400" y="66" textAnchor="middle" fill="rgb(252,116,29)" fontFamily="'JetBrains Mono', monospace" fontSize="13" fontWeight="600">vozduxan</text>
-          <text x="400" y="82" textAnchor="middle" fill="rgba(252,116,29,0.55)" fontFamily="'JetBrains Mono', monospace" fontSize="9">наш движок на c++</text>
+          <text x="400" y="82" textAnchor="middle" fill="rgba(252,116,29,0.55)" fontFamily="'JetBrains Mono', monospace" fontSize="9">c++ · libtorrent · http</text>
         </g>
 
-        {/* node: плеер */}
+        {/* node: audio */}
         <g>
           <rect x="620" y="50" width="160" height="40" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" />
-          <text x="700" y="68" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontFamily="'JetBrains Mono', monospace" fontSize="11">плеер</text>
-          <text x="700" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontFamily="'JetBrains Mono', monospace" fontSize="9">играет · 0.8 сек</text>
+          <text x="700" y="68" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontFamily="'JetBrains Mono', monospace" fontSize="11">&lt;audio&gt;</text>
+          <text x="700" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontFamily="'JetBrains Mono', monospace" fontSize="9">playing · 0.82s</text>
         </g>
 
         {/* connecting lines */}
@@ -731,7 +726,7 @@ function FlowDiagram() {
       </svg>
 
       <div className="mt-4 text-center text-[10px] font-mono uppercase tracking-widest text-white/30">
-        начало файла → движок → звук · без ожидания загрузки
+        pieces → buffer → &lt;audio&gt; · в режиме реального времени
       </div>
     </div>
   );
@@ -757,7 +752,7 @@ function Specs() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-20 text-center">
           <div className="text-xs font-mono uppercase tracking-widest text-white/40 mb-4">
-            Возможности
+            Под капотом
           </div>
           <h2 className="font-extrabold tracking-super-tight text-5xl md:text-7xl leading-[0.95]">
             Плеер как плеер.
@@ -769,11 +764,11 @@ function Specs() {
         <div className="grid md:grid-cols-6 gap-4">
           {/* big tile: EQ */}
           <div className="md:col-span-3 md:row-span-2 border border-white/10 rounded-3xl p-10 bg-gradient-to-br from-brand/10 to-transparent relative overflow-hidden">
-            <div className="text-xs font-mono text-white/40 mb-6">01 · Звук</div>
-            <div className="text-6xl font-extrabold tracking-super-tight mb-4">Эквалайзер на 10 полос</div>
+            <div className="text-xs font-mono text-white/40 mb-6">01 · Sound</div>
+            <div className="text-6xl font-extrabold tracking-super-tight mb-4">10-band EQ</div>
             <p className="text-white/60 max-w-sm">
-              Подкручивай звук как хочешь. Медиа-клавиши на клавиатуре работают.
-              Играющий трек показывается в Discord. Всё как у нормальных плееров.
+              Полноценный 10-полосный эквалайзер, Media Session API, Discord Rich Presence.
+              Всё что ждёшь от взрослого плеера.
             </p>
             <div className="mt-10 flex items-end gap-1.5 h-20">
               {eqBars.map((h, i) => (
@@ -786,28 +781,28 @@ function Specs() {
             </div>
           </div>
 
-          {/* prefetch */}
+          {/* hover prefetch */}
           <div className="md:col-span-3 border border-white/10 rounded-3xl p-8 bg-white/[0.02]">
-            <div className="text-xs font-mono text-white/40 mb-4">02 · Предзагрузка</div>
-            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-3">Подводишь курсор — загрузка уже идёт</div>
+            <div className="text-xs font-mono text-white/40 mb-4">02 · Prefetch</div>
+            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-3">Hover — и буфер готов</div>
             <p className="text-white/55 text-[15px] leading-relaxed">
-              Пока ты выбираешь трек, приложение уже тихо подгружает его начало.
-              Нажмёшь — играет без задержки.
+              Навёл курсор на трек — приложение уже подтягивает первые piece’ы.
+              Нажал play — звук мгновенный.
             </p>
           </div>
 
           {/* export */}
           <div className="md:col-span-3 border border-white/10 rounded-3xl p-8 bg-white/[0.02]">
-            <div className="text-xs font-mono text-white/40 mb-4">03 · Скачивание</div>
-            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-3">Понравилось — забирай на диск</div>
+            <div className="text-xs font-mono text-white/40 mb-4">03 · Export</div>
+            <div className="text-2xl md:text-3xl font-bold tracking-tight mb-3">Скачивай с сохранением структуры</div>
             <p className="text-white/55 text-[15px] leading-relaxed">
-              Скачай весь альбом одной кнопкой. Папки, обложки, теги дорожек — всё на своих местах, как на нормальном CD.
+              Понравилось — забирай на диск. Папки, метаданные, обложки — всё на месте.
             </p>
           </div>
 
           {/* platforms */}
           <div className="md:col-span-2 border border-white/10 rounded-3xl p-8 bg-white/[0.02]">
-            <div className="text-xs font-mono text-white/40 mb-4">04 · Системы</div>
+            <div className="text-xs font-mono text-white/40 mb-4">04 · Platforms</div>
             <div className="flex items-center gap-5 text-white/70 text-3xl mt-6">
               <Apple />
               <Monitor />
@@ -818,16 +813,16 @@ function Specs() {
 
           {/* open source */}
           <div className="md:col-span-2 border border-white/10 rounded-3xl p-8 bg-white/[0.02]">
-            <div className="text-xs font-mono text-white/40 mb-4">05 · Открытый код</div>
+            <div className="text-xs font-mono text-white/40 mb-4">05 · Open source</div>
             <div className="text-2xl font-bold tracking-tight mb-2">MIT</div>
             <p className="text-white/55 text-[15px] leading-relaxed">
-              И плеер, и движок — с открытым исходным кодом. Посмотри, как сделано. Дорабатывай под себя. Собери свою версию.
+              Приложение и стриминг-движок — оба открыты. Читай код, форкай, собирай сам.
             </p>
           </div>
 
           {/* stack */}
           <div className="md:col-span-2 border border-white/10 rounded-3xl p-8 bg-white/[0.02]">
-            <div className="text-xs font-mono text-white/40 mb-4">06 · Технологии</div>
+            <div className="text-xs font-mono text-white/40 mb-4">06 · Stack</div>
             <ul className="space-y-1.5 font-mono text-sm text-white/60">
               <li><span className="text-brand">tauri</span> 2</li>
               <li><span className="text-brand">rust</span> + tokio</li>
@@ -848,32 +843,32 @@ function Specs() {
 function Faq() {
   const qs = [
     {
-      q: "Это легально?",
-      a: "Neegde — это плеер, ничего больше. Музыку он берёт с публичных торрент-трекеров, сам ничего не хранит и никому не раздаёт. За то, что ты слушаешь, отвечаешь ты сам — ровно как и везде, где работают торренты.",
+      q: "Это вообще легально?",
+      a: "Neegde — это плеер. Источник музыки — публичные BitTorrent-трекеры. Приложение не хостит и не распространяет контент само. Ответственность за то что ты стримишь — на тебе, как и везде где речь о p2p.",
     },
     {
-      q: "Это правда бесплатно? Подвоха нет?",
-      a: "Бесплатно. Подвоха нет. Ни подписки, ни платных функций, ни «премиум» версии. Исходный код открыт, можешь посмотреть сам что внутри.",
+      q: "Это платно? Есть подписка?",
+      a: "Нет. Никогда не будет. Никакой подписки, никаких in-app покупок, никакого premium-уровня. Приложение бесплатное и с открытым исходным кодом под MIT.",
     },
     {
-      q: "Почему через торренты?",
-      a: "Чтобы не зависеть от чужих серверов, чужих лицензий и чужих блокировок. Торренты работают сами по себе — мы просто научили плеер читать из них так, как будто это обычный файл на диске.",
+      q: "Почему торренты, а не обычный стриминг?",
+      a: "Потому что не нужно чьего-то сервера, чьей-то лицензии и чьей-то цензуры. Рой живёт сам. Мы просто научили плеер читать из него как из файла.",
     },
     {
       q: "Откуда берётся музыка?",
-      a: "Из Rutracker — крупнейшего русскоязычного торрент-трекера. Там есть почти вся музыка, которую ты знаешь, включая редкости и FLAC. Если Rutracker заблокирован, приложение автоматически подключается через зеркало или прокси.",
+      a: "Интеграция с Rutracker — крупнейшим русскоязычным BitTorrent-трекером с огромной музыкальной базой, включая lossless. Поддерживаются зеркала и прокси для обхода блокировок.",
     },
     {
-      q: "Почему так быстро?",
-      a: "Обычный торрент-клиент качает файл кусками откуда получится — поэтому ждать приходится долго. Наш движок специально просит у сети в первую очередь начало трека, а не весь файл сразу. Как только первые секунды пришли, плеер начинает играть. Обычно это занимает меньше секунды.",
+      q: "Почему так быстро? Трек играет пока ещё качается?",
+      a: "C++ движок vozduxan запрашивает первые piece’ы файла с дедлайном в libtorrent, запускает локальный HTTP-сервер с Range-запросами, и отдаёт данные аудио-элементу по мере поступления. Первый байт приходит за ~800мс.",
     },
     {
-      q: "А мои данные — история, отметки — куда уходят?",
-      a: "Никуда не уходят. Всё хранится на твоём компьютере. Мы не знаем, какую музыку ты слушаешь: нет ни аналитики, ни облачной синхронизации, ни аккаунта. Удалишь приложение — файлы с твоей историей всё равно останутся на диске, пока ты сам их не удалишь.",
+      q: "А мои лайки и история — они куда уходят?",
+      a: "Никуда. Всё хранится локально на твоём диске. Никакого аккаунта, никакой телеметрии, никакого cloud sync. Если удалишь приложение — данные останутся в твоей файловой системе.",
     },
     {
       q: "Почему Tauri, а не Electron?",
-      a: "Tauri использует системный браузер (тот, что уже есть в вашей ОС), а не тащит с собой встроенный Chromium. И написан на Rust. Поэтому приложение весит десятки мегабайт, а не сотни, и потребляет в разы меньше памяти чем большинство современных программ.",
+      a: "Tauri использует системный WebView вместо своего Chromium, а бэкенд на Rust. Итог: приложение весит десятки мегабайт вместо сотен и жрёт в разы меньше памяти.",
     },
   ];
 
@@ -930,7 +925,7 @@ function DownloadBlock() {
           <span className="text-brand">Бесплатно.</span>
         </h2>
         <p className="text-xl text-white/55 max-w-xl mx-auto mb-16">
-          Скачай версию под свою систему. Запусти. Выбери любой трек. Засеки секунду.
+          Скачай сборку под свою систему. Открой. Нажми play. Засеки секунду.
         </p>
 
         <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
@@ -1021,12 +1016,12 @@ function Manifest() {
 /* ──────────────────────────────────────────────────────────────────── */
 
 const COMPARE_ROWS = [
-  { label: "Цена",                    neegde: "0 ₽",     spotify: "от 199 ₽/мес", apple: "от 199 ₽/мес", ytm: "от 179 ₽/мес" },
-  { label: "Доступ из России",        neegde: true,      spotify: false,          apple: false,          ytm: "warn" },
-  { label: "Качество FLAC",           neegde: true,      spotify: false,          apple: true,           ytm: false },
-  { label: "Без регистрации",         neegde: true,      spotify: false,          apple: false,          ytm: false },
-  { label: "Данные на твоём компьютере", neegde: true,   spotify: false,          apple: false,          ytm: false },
-  { label: "Открытый исходный код",   neegde: "MIT",     spotify: false,          apple: false,          ytm: false },
+  { label: "Цена",            neegde: "0 ₽",           spotify: "от 199 ₽/мес",  apple: "от 199 ₽/мес", ytm: "от 179 ₽/мес" },
+  { label: "Работает в РФ",   neegde: true,            spotify: false,           apple: false,           ytm: "warn" },
+  { label: "Lossless (FLAC)", neegde: true,            spotify: false,           apple: true,            ytm: false },
+  { label: "Без аккаунта",    neegde: true,            spotify: false,           apple: false,           ytm: false },
+  { label: "Локальные данные",neegde: true,            spotify: false,           apple: false,           ytm: false },
+  { label: "Open source",     neegde: "MIT",           spotify: false,           apple: false,           ytm: false },
 ];
 
 function Cell({ value }) {
@@ -1053,7 +1048,7 @@ function Compare() {
             Считай сам.
           </h2>
           <p className="mt-6 text-lg text-white/50 max-w-xl mx-auto">
-            Одна таблица без маркетинга. Только то, что важно, когда слушаешь музыку каждый день.
+            Одна таблица. Без маркетинга. Параметры которые реально влияют на то как ты слушаешь музыку.
           </p>
         </div>
 
@@ -1171,7 +1166,7 @@ function Footer() {
             <span className="font-semibold tracking-tight">neegde</span>
           </div>
           <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-            Бесплатный музыкальный плеер, который играет треки прямо из&nbsp;торрентов. Написан на&nbsp;Rust и&nbsp;C++.
+            Музыкальный стриминг из BitTorrent-роёв. Под капотом — Rust, C++ и libtorrent.
           </p>
         </div>
 
@@ -1185,7 +1180,7 @@ function Footer() {
         </div>
 
         <div>
-          <div className="text-xs font-mono uppercase tracking-widest text-white/30 mb-4">Технологии</div>
+          <div className="text-xs font-mono uppercase tracking-widest text-white/30 mb-4">Stack</div>
           <ul className="space-y-2 text-sm text-white/60 font-mono">
             <li>tauri · rust · tokio</li>
             <li>vue 3 · vite · pinia</li>
